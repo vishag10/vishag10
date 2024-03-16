@@ -1,0 +1,139 @@
+{% extends 'Employer/employer-home.html' %}
+
+{% block content %}
+   <!-- ***** Call to Action Start ***** -->
+   <section class="section section-bg" id="call-to-action" style="background-image: url('{static "images/banner-image-1-1920x500.jpg" }')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2><em>History</em></h2>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Call to Action End ***** -->
+{% endblock %}
+
+
+
+{% block job %}
+
+{% endblock %}
+
+
+{% block non_block %}
+
+
+
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+  rel="stylesheet"
+/>
+
+
+
+<section class="intro">
+    <div class="bg-image h-100" style="background-color: #f5f7fa" >
+      <div class="mask d-flex align-items-center h-100">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <div class="card" style="margin-top: -3rem;">
+                <div class="card-body p-0">
+                  <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
+                    <table class="table table-striped mb-0">
+                      <thead style="background-color: #002d72;">
+                        <tr>
+                          <th scope="col">Job name</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Worker name</th>
+                          <th scope="col">Contact</th>
+                          <th scope="col">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for job in applications %}
+                        <tr>
+                          {% if job.status == "paid" %}
+                          <td>{{ job.job_id.jobcategory_id.job_name}}</td>
+                          <td>{{ job.booked_date }}</td>
+                          <td>{{ job.job_id.worker_id.username}}</td>
+                          <td>{{ job.job_id.worker_id.phone_number}}</td>           
+                          <td style="font-weight: bold;color:green">
+                            {{ job.status }}
+                          </td>
+                          {% endif %}
+                        </tr>
+                        {% endfor %}       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <style>
+    html,
+body,
+.intro {
+  height: 100%;
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+thead th {
+  color: #fff;
+}
+
+.card {
+  border-radius: .5rem;
+}
+
+.table-scroll {
+  border-radius: .5rem;
+}
+
+.table-scroll table thead th {
+  font-size: 1.25rem;
+}
+thead {
+  top: 0;
+  position: sticky;
+}
+  </style>
+
+    <!-- MDB -->
+<script
+type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+></script>
+
+{% endblock %}
+

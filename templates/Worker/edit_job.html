@@ -1,0 +1,60 @@
+{% extends 'Worker/worker-home.html' %}
+{% block content %}
+<section class="section section-bg" id="call-to-action"
+  style="background-image: url('{static `images/banner-image-1-1920x500.jpg` }')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <div class="cta-content">
+          <br>
+          <br>
+          <h2>Edit<em>Job</em></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-12 grid-margin mx-auto mt-4">
+        <div class="card" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; margin: auto; max-width: 60%; ">
+          <div class="card-body">
+            <form class="form-sample" action="{% url 'edit_job' id=jobs.id %}" method="post"
+              enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Price</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="price" value="{{ jobs.Price }}" placeholder="{{ jobs.Price }}"
+                        class="form-control" required />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Description</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="description" value="{{ jobs.description}}"
+                      placeholder="{{ jobs.description}}" class="form-control" required />
+                  </div>
+                </div>
+              </div>
+
+            <div style="margin: auto;width: 100%;text-align: center;margin-top: 20px;">
+              <button type="submit" class="btn btn-outline-danger btn-fw">
+                Submit</button>
+            </div>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+{% endblock %}

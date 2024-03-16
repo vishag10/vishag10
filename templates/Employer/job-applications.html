@@ -1,0 +1,308 @@
+{% extends 'Employer/employer-home.html' %}
+
+{% block content %}
+   <!-- ***** Call to Action Start ***** -->
+   <section class="section section-bg" id="call-to-action" style="background-image: url('{static "images/banner-image-1-1920x500.jpg" }')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2><em>Applications</em></h2>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Call to Action End ***** -->
+{% endblock %}
+
+
+
+{% block job %}
+
+
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+  rel="stylesheet"
+/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<style>
+  * {
+        margin: 0;
+        padding: 0;
+      }
+    
+      .rate {
+        float: left;
+        height: 46px;
+        padding: 0 10px;
+      }
+    
+      .rate:not(:checked)>input {
+        position: absolute;
+        top: -9999px;
+      }
+    
+      .rate:not(:checked)>label {
+        float: right;
+        width: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 30px;
+        color: #ccc;
+      }
+    
+      .rate:not(:checked)>label:before {
+        content: '★ ';
+      }
+    
+      .rate>input:checked~label {
+        color: #ffc700;
+      }
+    
+      .rate:not(:checked)>label:hover,
+      .rate:not(:checked)>label:hover~label {
+        color: #deb217;
+      }
+    
+      .rate>input:checked+label:hover,
+      .rate>input:checked+label:hover~label,
+      .rate>input:checked~label:hover,
+      .rate>input:checked~label:hover~label,
+      .rate>label:hover~input:checked~label {
+        color: #c59b08;
+      }
+      td{
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+</style>
+
+<section class="intro">
+    <div class="bg-image h-100" style="background-color: #f5f7fa" >
+      <div class="mask d-flex align-items-center h-100">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <div class="card" style="margin-top: -3rem;">
+                <div class="card-body p-0">
+                  <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
+                    <table class="table table-striped" >
+                      <thead style="background-color: #002d72;padding: 20px;">
+                        <tr >
+                          <th  scope="col">Job name</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Worker name</th>
+                          <th scope="col">Contact</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for job in applications %}
+                          
+                        <tr>
+                          {% if job.status == "Approved" %}
+                          <td>{{ job.job_id.jobcategory_id.job_name}}</td>
+                          <td>{{ job.booked_date }}</td>
+                          <td>{{ job.job_id.worker_id.username}}</td>
+                          <td>{{ job.job_id.worker_id.phone_number}}</td>
+                          <td style="font-weight: bold;color: rgb(9, 255, 0);">
+                            {{ job.status }}
+                          </td>
+
+                          {% elif job.status == "Pending" %}
+                          <td>{{ job.job_id.jobcategory_id.job_name}}</td>
+                          <td>{{ job.booked_date }}</td>
+                          <td>{{ job.job_id.worker_id.username}}</td>
+                          <td>{{ job.job_id.worker_id.phone_number}}</td>
+                          <td style="font-weight: bold;color: orange;">
+                            {{ job.status }}
+                          </td>
+
+                          {% elif job.status == "Rejected" %}
+                          <td>{{ job.job_id.jobcategory_id.job_name}}</td>
+                          <td>{{ job.booked_date }}</td>
+                          <td>{{ job.job_id.worker_id.username}}</td>
+                          <td>{{ job.job_id.worker_id.phone_number}}</td>
+                          <td style="font-weight: bold;color: red;">
+                            {{ job.status }}
+                          </td>
+
+                          {% elif job.status == "Completed" %}
+                          <td>{{ job.job_id.jobcategory_id.job_name}}</td>
+                          <td>{{ job.booked_date }}</td>
+                          <td>{{ job.job_id.worker_id.username}}</td>
+                          <td>{{ job.job_id.worker_id.phone_number}}
+                         
+                          </td>
+                          
+                          <td>
+                            <a href="{% url 'payments' id=job.id %}"><button class="btn btn-success" title="Payment" style="border: none; " type="submit" name="status" value="approve" >
+                              Pay Now</i>
+                            </button></a>
+                          </td>
+
+                          {% elif job.status == "paid" %}
+                            {% if not job.review %}
+                          
+                              <td>{{ job.job_id.jobcategory_id.job_name}}</td>
+                              <td>{{ job.booked_date }}</td>
+                              <td>{{ job.job_id.worker_id.username}}</td>
+                              <td>{{ job.job_id.worker_id.phone_number}}</td>
+                              <td>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                  Review
+                                </button>
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Review/Rating</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <form class="forms-sample" action="{% url 'add_review' id=job.id %}" method="post">
+                                          {% csrf_token %}
+                                          <div class="form-group">
+                                            <label for="exampleTextarea1">Review</label>
+                                            <textarea class="form-control" name="review" id="exampleTextarea1" rows="2"></textarea required>
+                                          </div>
+                                        
+                                        
+                                        <div class="rate">
+                                          <input type="radio" id="star5" name="rate" value="5" />
+                                          <label for="star5" title="text">5 stars</label>
+                                          <input type="radio" id="star4" name="rate" value="4" />
+                                          <label for="star4" title="text">4 stars</label>
+                                          <input type="radio" id="star3" name="rate" value="3" />
+                                          <label for="star3" title="text">3 stars</label>
+                                          <input type="radio" id="star2" name="rate" value="2" />
+                                          <label for="star2" title="text">2 stars</label>
+                                          <input type="radio" id="star1" name="rate" value="1" />
+                                          <label for="star1" title="text">1 star</label>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">submit</button>
+                                      </div>
+                                    </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            {% else %}
+                            <td>{{ job.job_id.jobcategory_id.job_name}}</td>
+                              <td>{{ job.booked_date }}</td>
+                              <td>{{ job.job_id.worker_id.username}}</td>
+                              <td>{{ job.job_id.worker_id.phone_number}}</td>
+                              <td style="padding-left: 40px;" >
+                                <svg style="color: #375085;"  data-bs-toggle="collapse" data-bs-target="#bookingDetails{{ job.id }}" aria-expanded="false" aria-controls="bookingDetails{{ booking.id }}" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+                                </svg>
+                          </td>
+                            {% endif %}
+
+                          {% endif %}
+                        </tr>
+                      <tr>
+        <td colspan="9" class="collapse" id="bookingDetails{{ job.id }}">
+          {% if job.review %}
+          <div style="text-align: center;">
+            <span style="font-size: 15px;color: rgb(0, 0, 0);">{{job.review}}</span>
+            <div style="color: rgb(233, 136, 10);font-size: 20px;">
+              {% for star_value in "★★★★★"|slice:job.rating %}
+              <span class="star">&#9733;</span>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </td>
+      </tr>
+
+                        {% endfor %}           
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <style>
+    html,
+body,
+.intro {
+  height: 100%;
+}
+
+td{
+  padding-top: 20px!important;
+  padding-bottom: 20px!important;
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+thead th {
+  color: #fff;
+}
+
+.card {
+  border-radius: .5rem;
+}
+
+.table-scroll {
+  border-radius: .5rem;
+}
+
+.table-scroll table thead th {
+  font-size: 1.25rem;
+}
+thead {
+  top: 0;
+  position: sticky;
+}
+  </style>
+
+    <!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+crossorigin="anonymous"></script>
+
+{% endblock %}
+
+
+{% block non_block %}
+
+
+{% endblock %}
+

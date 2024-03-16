@@ -1,0 +1,44 @@
+{% extends 'Home/index.html' %}
+{% block content %}
+   <!-- ***** Call to Action Start ***** -->
+   <section class="section section-bg" id="call-to-action" style="background-image: url('{static `images/banner-image-1-1920x500.jpg` }')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2>Our <em>Jobs</em></h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Call to Action End ***** -->
+{% endblock %}
+{% block job %}   
+{% load static %}
+<section class="section" id="trainers">
+    <div class="container">
+
+        <div class="row">
+        {% for job in jobs %}
+            <div class="col-lg-4">
+                <div class="trainer-item">
+                    <div class="image-thumb">
+                        <img src="{{ job.image.url }}" alt="">
+                    </div>
+                    <div class="down-content">
+
+                        <h4>{{ job.job_name }}</h4>
+                        <h4>{{ job.job_details }}</h4>
+
+                    </div>
+                </div>
+            </div>     
+        {% endfor %}
+        </div>
+        <br>
+</section>
+{% endblock %}

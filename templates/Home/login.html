@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	{% load static %}
+  	<title>Login 02</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+	<link rel="stylesheet" href="{% static 'css/login.css' %}">
+	<link rel="stylesheet"  href="{% static 'css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+	</head>
+	<style>
+		.forms{
+
+			display: block;
+			width: 100%;
+			height: calc(1.5em + .75rem + 2px);
+			padding: .375rem .75rem;
+			font-size: 1rem;
+			font-weight: 400;
+			line-height: 1.5;
+			color: #ffffff;
+			background-color: #494949;
+			background-clip: padding-box;
+			border: 1px solid #ced4da;
+			border-radius: .25rem;
+			transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+		}
+	</style>
+	<body>
+		
+		<header class="header-area header-sticky">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<nav class="main-nav">
+							<!-- ***** Logo Start ***** -->
+							<a href="{% url 'home'%}" class="logo">Find My <em> Worker</em></a>
+							<!-- ***** Logo End ***** -->
+							<!-- ***** Menu Start ***** -->
+							<ul class="nav">
+								<li><a href="{% url 'home'%}" >Home</a></li>
+								<li><a href="{% url 'jobs'%}">Jobs</a></li>
+								<li><a href="{% url 'about'%}">About Us</a></li>
+								<li><a href="{% url 'contact'%}">Contact</a></li> 
+								<li><a href="{% url 'Login'%}">Login</a></li>
+								<li class="dropdown">
+									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										Register
+									  </button>
+									  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+										<a class="dropdown-item" href="{% url 'Worker_register'%}">Register as Worker</a>
+										<a class="dropdown-item" href="{% url 'employer_register'%}">Register as Employer</a>
+									</div>
+								</li>
+							</ul>        
+							<a class='menu-trigger'>
+								<span>Menu</span>
+							</a>
+							<!-- ***** Menu End ***** -->
+						</nav>
+					</div>
+				</div>
+			</div>
+		</header>
+	<section class="ftco-section"style='background-color:#383d41'>
+		<div class="container">
+			<!-- <div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Login #02</h2>
+				</div>
+			</div> -->
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+		      	<h3 class="mb-4 text-center">Sign In</h3>
+				{% if message %}
+			  		<p style="color: crimson;">{{ message }}</p>
+			  	{% endif %}
+		      	<form method="post" action="Login" class="signin-form">
+					{% csrf_token %}
+		      		<div class="form-group">
+		      			<input type="text" class="forms" name="username" placeholder="Username" required>
+		      		</div>
+					<div class="form-group">
+					<input type="password" class="forms" name="password" placeholder="Password" required>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="forms btn btn-primary rounded submit px-3">Sign In</button>
+					</div>
+	          </form>
+	          <p class="w-100 text-center">&mdash; Don't have an Account? Register as &mdash;</p>
+	          <div class="social d-flex text-center">
+	          	<a href="{% url 'Worker_register' %}" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Worker</a>
+	          	<a href="{% url 'employer_register' %}" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Employer</a>
+	          </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer style='background-color:#383d41;'>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p style="color: white;">
+                        Copyright © {% now "Y" %} Find My Worker
+                        <!-- - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a> -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+ <!-- jQuery -->
+ <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+
+ <!-- Bootstrap -->
+ <script src="{% static 'js/popper.js' %}"></script>
+ <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+ <!-- Plugins -->
+ <script src="{% static 'js/scrollreveal.min.js' %}"></script>
+ <script src="{% static 'js/waypoints.min.js' %}"></script>
+ <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+ <script src="{% static 'js/imgfix.min.js' %}"></script> 
+ <script src="{% static 'js/mixitup.js' %}"></script> 
+ <script src="{% static 'js/accordions.js' %}"></script>
+ 
+ <!-- Global Init -->
+ <script src="{% static 'js/custom.js' %}"></script>
+
+	</body>
+</html>
+

@@ -1,0 +1,40 @@
+{% extends 'Worker/worker-home.html' %}
+
+{% block content %}
+
+
+   <!-- ***** Call to Action Start ***** -->
+   <section class="section section-bg" id="call-to-action" style="background-image: url('{static "images/banner-image-1-1920x500.jpg" }')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2><em>Reviews</em></h2>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Call to Action End ***** -->
+
+
+<div>
+{% for reviews in applications %}
+{% if reviews.review %}
+
+    <div style="text-align: center;">
+        <div>{{ reviews.employer_id.username }}</div>
+        <span style="font-size: 15px;color: rgb(0, 0, 0);">{{ reviews.review }}</span>
+        <div style="color: rgb(233, 136, 10);font-size: 20px;">
+        {% for star_value in "★★★★★"|slice:reviews.rating %}
+        <span class="star">&#9733;</span>
+        {% endfor %}
+        </div>
+    </div>
+{% endif %}
+{% endfor %}
+</div>
+{% endblock %}

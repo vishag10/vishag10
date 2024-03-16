@@ -1,0 +1,164 @@
+{% extends 'Employer/employer-home.html' %}
+{% block content %}
+<!-- ***** Call to Action Start ***** -->
+<section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/banner-image-1-1920x500.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2><em><b>&#x20B9;</b>{{ job.Price }}/ Hour</em></h2>
+                    <p>{{ job.jobcategory_id.job_name }}</p>
+                    <div class="main-button">
+                      <a href="{% url 'job_apply' id=job.id %}">Apply for this Job</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Call to Action End ***** -->
+
+<!-- ***** Fleet Starts ***** -->
+<section class="section" id="trainers">
+    <div class="container">
+        <br>
+        <br>
+
+        <div class="row" id="tabs">
+          <div class="col-lg-4">
+            <ul>
+              <li><a href='#tabs-2'><i class="fa fa-star"></i> Reviews</a></li>
+              <li><a href='#tabs-3'><i class="fa fa-phone"></i> Contact Details</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-8">
+            <section class='tabs-content' style="width: 100%;">
+
+              <article id='tabs-2'>
+                <h4> Reviews </h4>
+
+                
+                {% for reviews in applications %}
+                {% if reviews.review %}
+                <p class="lead"> <i class="fa fa-calendar"></i> {{ reviews.booked_date }} </p>
+                <div style="text-align: center;">
+                    <span style="font-size: 15px;color: rgb(0, 0, 0);">{{reviews.review}}</span>
+                    <div style="color: rgb(233, 136, 10);font-size: 20px;">
+                      {% for star_value in "★★★★★"|slice:reviews.rating %}
+                        <span class="star">&#9733;</span>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endif %}
+                {% endfor %}
+
+                
+                
+                
+               </article>
+
+              <article id='tabs-3'>
+                <h4>Contact Details</h4>
+
+                <div class="row">   
+                    <div class="col-sm-6">
+                        <label>Name</label>
+
+                        <p>{{ job.worker_id.username }}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Phone</label>
+                        <p><a href="tel:{{ job.worker_id.phone_number }}">{{ job.worker_id.phone_number }}</a></p>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label>Email</label>
+                        <p><a href="mailto:{{ job.worker_id.email }}">{{ job.worker_id.email }}</a></p>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Address</label>
+                        <p>{{ job.worker_id.address }} </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Photo</label>
+                        <img src="{{ job.worker_id.pic.url }}" alt="">
+                    </div>
+                
+                </div>
+              </article>
+            </section>
+          </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Fleet Ends ***** -->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Enquiry</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="contact-us">
+          <div class="contact-form">
+            <form action="#" id="contact">
+                <div class="row">
+                     <div class="col-md-6">
+                        <fieldset>
+                          <input type="text" class="form-control" placeholder="Enter full name" required="">
+                        </fieldset>
+                     </div>
+
+                     <div class="col-md-6">
+                        <fieldset>
+                          <input type="text" class="form-control" placeholder="Enter email address" required="">
+                        </fieldset>
+                     </div>
+                </div>
+
+                <div class="row">
+                     <div class="col-md-6">
+                        <fieldset>
+                          <input type="text" class="form-control" placeholder="Enter phone" required="">
+                        </fieldset>
+                     </div>
+
+                     <div class="col-md-6">
+                        <div class="row">
+                           <div class="col-md-6">
+                              <fieldset>
+                                <input type="text" class="form-control" placeholder="From date" required="">
+                              </fieldset>
+                           </div>
+
+                           <div class="col-md-6">
+                              <fieldset>
+                                <input type="text" class="form-control" placeholder="To date" required="">
+                              </fieldset>
+                           </div>
+                        </div>
+                     </div>
+                </div>
+            </form>
+         </div>
+         </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">Send Request</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block non_block %}
+{% endblock %}
+{% block job %}
+{% endblock %}

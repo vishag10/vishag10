@@ -1,0 +1,52 @@
+{% extends 'Worker/worker-home.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="section section-bg" id="call-to-action" style="background-image: url('{static "images/banner-image-1-1920x500.jpg" }')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2><em>Profile</em></h2>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container border py-3 my-3" style="display: flex; flex-direction: column; align-items: center;">
+    <h2>User Profile Details</h2>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <div style="margin: 10px;">
+            <strong>Username:</strong> {{ user.username }}
+        </div>
+        <div style="margin: 10px;">
+            <strong>Email:</strong> {{ user.email }}
+        </div>
+        <div style="margin: 10px;">
+            <strong>Phone Number:</strong> {{ user.phone_number }}
+        </div>
+        <div style="margin: 10px;">
+            <strong>User Type:</strong> {{ user.user_type }}
+        </div>
+        <div style="margin: 10px;">
+            <strong>Address:</strong> {{ user.address }}
+        </div>
+        <div style="margin: 10px;">
+            <strong>Description:</strong> {{ user.description }}
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <img src="{{ user.pic.url }}" alt="User Profile Picture" style="max-width: 100%; max-height: 300px;">
+    </div>
+</div>
+
+
+
+{% endblock %}
