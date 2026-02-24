@@ -81,58 +81,18 @@ I'm a passionate Full Stack Developer with a keen eye for creating seamless, use
   <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
 </p>
 
-## 📊 **GitHub Analytics**
-
-<div align="center">
-  <img width="48%" src="https://github-readme-stats.vercel.app/api?username=vishak-10&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117" />
-  <img width="48%" src="https://github-readme-streak-stats.herokuapp.com/?user=vishak-10&theme=tokyonight&hide_border=true&background=0D1117" />
-</div>
-
-<br>
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=vishak-10&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117" />
-</div>
-
-<br>
-
-## 🏆 **GitHub Trophies**
-
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=vishak-10&theme=onedark&no-frame=true&row=1&column=7" />
-</div>
-
-## 📈 **Activity Graph**
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=vishak-10&bg_color=0D1117&color=5BCDEC&line=5BCDEC&point=FFFFFF&hide_border=true" />
-
-## 💼 **Featured Projects**
-
-<div align="center">
-  <a href="https://github.com/vishak-10/project1">
-    <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=vishak-10&repo=project1&theme=tokyonight&hide_border=true&bg_color=0D1117" />
-  </a>
-  <a href="https://github.com/vishak-10/project2">
-    <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=vishak-10&repo=project2&theme=tokyonight&hide_border=true&bg_color=0D1117" />
-  </a>
-</div>
-
-<br>
 
 ## 📫 **Let's Connect!**
 
 <p align="center">
-  <a href="https://vishak.dev">
+  <a href="https://www.linkedin.com/in/vishakchandran/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">
     <img src="https://img.shields.io/badge/Portfolio-255E63?style=for-the-badge&logo=About.me&logoColor=white" />
   </a>
   <a href="mailto:vishagchandran10@gmail.com">
     <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
   </a>
-  <a href="https://linkedin.com/in/vishak">
+  <a href="https://www.linkedin.com/in/vishakchandran/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
-  </a>
-  <a href="https://twitter.com/vishak_dev">
-    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />
   </a>
   <a href="https://dev.to/vishak">
     <img src="https://img.shields.io/badge/dev.to-0A0A0A?style=for-the-badge&logo=dev.to&logoColor=white" />
